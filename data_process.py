@@ -80,17 +80,34 @@ def gen_input_traj_csv():
 
 
 def gen_node_csv():
-    data = pd.read_csv('./data_processd/road_round.csv')
-    count = 0
-    for c in tqdm(data['coordinates']):
-        print(type(eval(c)))
-        return
+    import pandas as pd
+    import json
+    # 读取原始csv文件
+    df = pd.read_csv('./data_raw/road.csv')
 
-    with open('./data_processd/node.csv', 'w', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow(["id;x;y"])
-        for item in data:
-            writer.writerow([item])
+    # 将coordinates列的字符串转化为真正的列表
+    df['coordinates'] = df['coordinates'].apply(json.loads)
+
+    # 提取coordinates列表中的所有元素，并创建新的DataFrame
+    rows = []
+    seen = set()  # 用于存储已经添加过的坐标
+    for i, row in df.iterrows():
+        for coord in row['coordinates']:
+            # 将坐标转换为字符串，然后检查是否已经存在
+            coord_str = json.dumps(coord)
+            if coord_str not in seen:
+                seen.add(coord_str)
+                rows.append({
+                    'geo_id': len(rows),
+                    'type': 'Point',
+                    'coordinates': coord,
+                    'highway': row['highway']
+                })
+
+    new_df = pd.DataFrame(rows)
+
+    # 将新的DataFrame保存为csv文件
+    new_df.to_csv('./data_processd/node.csv', index=False)
 
 
 
