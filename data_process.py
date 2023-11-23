@@ -3,7 +3,7 @@ from coordTransform_utils import *
 from tqdm import tqdm
 import csv
 import ast
-
+import json
 
 def traj_csv_to_js():
     '''
@@ -80,8 +80,6 @@ def gen_input_traj_csv():
 
 
 def gen_node_csv():
-    import pandas as pd
-    import json
     # 读取原始csv文件
     df = pd.read_csv('./data_raw/road.csv')
 
@@ -213,14 +211,14 @@ def road_csv_drop_duplicates():
     删除 edges.csv 中坐标相同但其他属性不同的路
     '''
     # 读取CSV文件
-    file_path = './data_processd/road_round.csv'  # 请替换成你的文件路径
+    file_path = './data_raw/road.csv'  # 请替换成你的文件路径
     df = pd.read_csv(file_path)
     # 按照'length'升序排列
-    df.sort_values(by='length', inplace=True)
+    # df.sort_values(by='length', inplace=True)
     # 根据'length'和'coordinates'列删除重复行，只保留第一次出现的行
     df.drop_duplicates(subset=['length', 'coordinates'], keep='first', inplace=True)
     # 将结果保存到新的CSV文件
-    output_file_path = './data_processd/road_round_drop_duplicates.csv'  # 请替换成你想要保存的文件路径
+    output_file_path = './data_processd/road_drop_duplicates.csv'  # 请替换成你想要保存的文件路径
     df.to_csv(output_file_path, index=False)
 
 
@@ -236,4 +234,6 @@ if __name__ == '__main__':
     # gen_input_edges_csv()
 
     # gen_node_csv()
-    fmm_draw_path(True)
+    # fmm_draw_path(True)
+
+    road_csv_drop_duplicates()
