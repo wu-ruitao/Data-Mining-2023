@@ -123,36 +123,27 @@ def gen_input_edges_csv():
         writer.writerow(header)
         with open("road.csv", "r") as f:
             reader = csv.reader(f)
-            count = -2
+            count = -1
             for row in tqdm(reader):
-                count += 1
                 if count == -1:
+                    count += 1
                     continue
-                road_id = str(count)
+
                 node_list = row[1][1:-1].split(", [")
                 start = node_list[0]
-                end = '[' + node_list[-1]
-                source = string2Id[start]
-                target = string2Id[end]
-                x1, y1 = start[1:-1].split(", ")
-                x2, y2 = end[1:-1].split(", ")
-                WKT = "LINESTRING (" + x1 + " " + y1 + ", " + x2 + " " + y2 + ")"
-                data = (WKT, road_id, road_id, source, target, "1", x1, y1, x2, y2)
-                writer.writerow(data)
-
-                # # 双向
-                # count += 1
-                # road_id = str(count)
-                # tmp = start
-                # start = end
-                # end = tmp
-                # source = string2Id[start]
-                # target = string2Id[end]
-                # x1, y1 = start[1:-1].split(", ")
-                # x2, y2 = end[1:-1].split(", ")
-                # WKT = "LINESTRING (" + x1 + " " + y1 + ", " + x2 + " " + y2 + ")"
-                # data = (WKT, road_id, road_id, source, target, "1", x1, y1, x2, y2)
-                # writer.writerow(data)
+                for end in node_list[1:]:
+                    road_id = str(count)
+                    end = '[' + end
+                    source = string2Id[start]
+                    target = string2Id[end]
+                    x1, y1 = start[1:-1].split(", ")
+                    x2, y2 = end[1:-1].split(", ")
+                    WKT = "LINESTRING (" + x1 + " " + y1 + ", " + x2 + " " + y2 + ")"
+                    data = [WKT, road_id, road_id, source, target, "1", x1, y1, x2, y2]
+                    count += 1
+                    print(data)
+                    writer.writerow(data)
+                    start = end
 
 
 
