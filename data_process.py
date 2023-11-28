@@ -4,6 +4,9 @@ from tqdm import tqdm
 import csv
 import ast
 import json
+import math
+
+
 
 def traj_csv_to_js():
     '''
@@ -23,8 +26,8 @@ def road_csv_to_js():
     '''
     原始 road.csv 文件转换为用于绘制地图的 js 文件
     '''
-    data = pd.read_csv("./data_raw/road.csv")
-    with open('./data_processd/road.js','w+') as f:
+    data = pd.read_csv("./data_processd/road_gcj.csv")
+    with open('./data_processd/roadgcj.js','w+') as f:
         f.write('var road = [')
         for c in tqdm(data['coordinates']):
             f.write(c)
@@ -50,6 +53,7 @@ def road_csv_wgs2gcj():
 def road_csv_round():
     '''
     road_gcj.csv 中的 GPS 坐标保留 7 位小数，输出为 road_round.csv
+    实际实验表明，不需要进行保留，否则匹配结果会出错！
     '''
     data = pd.read_csv('./data_processd/road_gcj.csv')
     for i in tqdm(range(len(data))):
@@ -66,7 +70,7 @@ def gen_input_traj_csv():
     with open('./data_raw/traj.csv', 'r') as input_file:
         reader = csv.DictReader(input_file)
         output_data = []
-        for row in reader:
+        for row in tqdm(reader):
             id_value = row['traj_id']
             coordinates = ast.literal_eval(row['coordinates'])
             coordinates = [f"{float(coord):f}" for coord in coordinates]
@@ -81,7 +85,7 @@ def gen_input_traj_csv():
 
 def gen_node_csv():
     # 读取原始csv文件
-    df = pd.read_csv('./data_raw/road.csv')
+    df = pd.read_csv('./data_processd/road_gcj_drop_duplicates.csv')
 
     # 将coordinates列的字符串转化为真正的列表
     df['coordinates'] = df['coordinates'].apply(json.loads)
@@ -136,7 +140,7 @@ def gen_input_edges_csv():
         writer = csv.writer(edge)
         header = ["WKT", "_uid_", "id", "source", "target", "cost", "x1", "y1", "x2", "y2"]
         writer.writerow(header)
-        with open("road.csv", "r") as f:
+        with open("./data_processd/road_gcj_drop_duplicates.csv", "r") as f:
             reader = csv.reader(f)
             count = -1
             for row in tqdm(reader):
@@ -156,7 +160,6 @@ def gen_input_edges_csv():
                     WKT = "LINESTRING (" + x1 + " " + y1 + ", " + x2 + " " + y2 + ")"
                     data = [WKT, road_id, road_id, source, target, "1", x1, y1, x2, y2]
                     count += 1
-                    print(data)
                     writer.writerow(data)
                     start = end
 
@@ -192,7 +195,11 @@ def fmm_draw_path(trans=False):
         f.write('var path = [')
         for mr_row in tqdm(mr['cpath']):
             # f.write('[')    # 每条完整路径的开始
-            cpath = list(eval(mr_row))
+            try:
+                cpath = list(eval(mr_row))
+            except TypeError as e:
+                # mr_row 为 int，说明该路径只有一段路
+                cpath = [eval(mr_row)]
             for id in cpath:
                 f.write('[') 
                 if trans:
@@ -211,29 +218,52 @@ def road_csv_drop_duplicates():
     删除 edges.csv 中坐标相同但其他属性不同的路
     '''
     # 读取CSV文件
-    file_path = './data_raw/road.csv'  # 请替换成你的文件路径
+    file_path = './data_processd/road_gcj.csv'
     df = pd.read_csv(file_path)
     # 按照'length'升序排列
     # df.sort_values(by='length', inplace=True)
     # 根据'length'和'coordinates'列删除重复行，只保留第一次出现的行
     df.drop_duplicates(subset=['length', 'coordinates'], keep='first', inplace=True)
     # 将结果保存到新的CSV文件
-    output_file_path = './data_processd/road_drop_duplicates.csv'  # 请替换成你想要保存的文件路径
+    output_file_path = './data_processd/road_gcj_drop_duplicates.csv'
     df.to_csv(output_file_path, index=False)
 
+
+def calculate_cost():
+    '''
+    计算 edges.csv 中 cost 列的值，目前认为 cost=路段起始点之间的大圆距离（单位：米）
+    '''
+    def haversine(lat1, lon1, lat2, lon2):
+        # 将经纬度转换为弧度
+        lat1, lon1, lat2, lon2 = map(math.radians, [lat1, lon1, lat2, lon2])
+        # 计算差值
+        dlat = lat2 - lat1
+        dlon = lon2 - lon1
+        # Haversine公式计算距离
+        a = math.sin(dlat / 2) ** 2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2) ** 2
+        c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+        # 地球半径（单位：千米）
+        radius = 6371000.0
+        # 计算距离
+        distance = radius * c
+        return distance
+    
+    # 读取CSV文件
+    df = pd.read_csv('./data_input/edges.csv')
+    # 遍历每一行，计算距离并写入 'cost' 列
+    for index, row in df.iterrows():
+        distance = haversine(row['y1'], row['x1'], row['y2'], row['x2'])
+        df.at[index, 'cost'] = distance
+    # 将结果写回CSV文件
+    df.to_csv('./data_input/edges.csv', index=False)
 
 
 if __name__ == '__main__':
 
-    # traj_csv_to_js()
-    # road_csv_to_js()
-    # road_csv_wgs2gcj()
-    # road_csv_round()
-
     # gen_input_traj_csv()
     # gen_input_edges_csv()
+    # fmm_draw_traj()
+    fmm_draw_path(False)
+    # road_csv_drop_duplicates()
 
-    # gen_node_csv()
-    # fmm_draw_path(True)
-
-    road_csv_drop_duplicates()
+    # calculate_cost()
