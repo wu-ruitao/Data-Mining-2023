@@ -13,7 +13,7 @@ def traj_csv_to_js():
     原始 traj.csv 文件转换为用于绘制地图的 js 文件
     '''
     data = pd.read_csv("./data_raw/traj.csv")
-    with open('./data_processd/traj.js','w+') as f:
+    with open('./data_processed/traj.js','w+') as f:
         f.write('var traj = [')
         for c in tqdm(data['coordinates']):
             f.write('{"lnglat":')
@@ -26,8 +26,8 @@ def road_csv_to_js():
     '''
     原始 road.csv 文件转换为用于绘制地图的 js 文件
     '''
-    data = pd.read_csv("./data_processd/road_gcj.csv")
-    with open('./data_processd/roadgcj.js','w+') as f:
+    data = pd.read_csv("./data_processed/road_gcj.csv")
+    with open('./data_processed/roadgcj.js','w+') as f:
         f.write('var road = [')
         for c in tqdm(data['coordinates']):
             f.write(c)
@@ -47,7 +47,7 @@ def road_csv_wgs2gcj():
             lng, lat = c
             res_list.append(wgs84_to_gcj02(lng, lat))
         data.loc[i,'coordinates'] = str(res_list)
-    data.to_csv('./data_processd/road_gcj.csv', index=False)
+    data.to_csv('./data_processed/road_gcj.csv', index=False)
 
 
 def road_csv_round():
@@ -55,7 +55,7 @@ def road_csv_round():
     road_gcj.csv 中的 GPS 坐标保留 7 位小数，输出为 road_round.csv
     实际实验表明，不需要进行保留，否则匹配结果会出错！
     '''
-    data = pd.read_csv('./data_processd/road_gcj.csv')
+    data = pd.read_csv('./data_processed/road_gcj.csv')
     for i in tqdm(range(len(data))):
         coord_list = eval(data.loc[i,'coordinates'])
         res_list = []
@@ -63,7 +63,7 @@ def road_csv_round():
             lng, lat = c
             res_list.append([round(lng,7), round(lat,7)])
         data.loc[i,'coordinates'] = str(res_list)
-    data.to_csv('./data_processd/road_round.csv', index=False)
+    data.to_csv('./data_processed/road_round.csv', index=False)
 
 
 def gen_input_traj_csv():
@@ -85,7 +85,7 @@ def gen_input_traj_csv():
 
 def gen_node_csv():
     # 读取原始csv文件
-    df = pd.read_csv('./data_processd/road_gcj_drop_duplicates.csv')
+    df = pd.read_csv('./data_processed/road_gcj_drop_duplicates.csv')
 
     # 将coordinates列的字符串转化为真正的列表
     df['coordinates'] = df['coordinates'].apply(json.loads)
@@ -109,13 +109,13 @@ def gen_node_csv():
     new_df = pd.DataFrame(rows)
 
     # 将新的DataFrame保存为csv文件
-    new_df.to_csv('./data_processd/node.csv', index=False)
+    new_df.to_csv('./data_processed/node.csv', index=False)
 
 
 
 def gen_node_json():
     string2Id = {}
-    with open('./data_processd/node.csv', 'r') as f:
+    with open('./data_processed/node.csv', 'r') as f:
         reader = csv.reader(f)
         count = 0
         for row in reader:
@@ -124,7 +124,7 @@ def gen_node_json():
                 continue
             string2Id[row[2]] = row[0]
     
-    with open("./data_processd/string2Id.json", "w") as r:
+    with open("./data_processed/string2Id.json", "w") as r:
         json.dump(string2Id, r)
 
 
@@ -133,14 +133,14 @@ def gen_node_json():
 def gen_input_edges_csv():
     gen_node_csv()
     gen_node_json()
-    with open("./data_processd/string2Id.json", "r") as r:
+    with open("./data_processed/string2Id.json", "r") as r:
         string2Id = json.load(r)
 
     with open("./data_input/edges.csv", "w", newline="") as edge:
         writer = csv.writer(edge)
         header = ["WKT", "_uid_", "id", "source", "target", "cost", "x1", "y1", "x2", "y2"]
         writer.writerow(header)
-        with open("./data_processd/road_gcj_drop_duplicates.csv", "r") as f:
+        with open("./data_processed/road_gcj_drop_duplicates.csv", "r") as f:
             reader = csv.reader(f)
             count = -1
             for row in tqdm(reader):
@@ -218,14 +218,14 @@ def road_csv_drop_duplicates():
     删除 edges.csv 中坐标相同但其他属性不同的路
     '''
     # 读取CSV文件
-    file_path = './data_processd/road_gcj.csv'
+    file_path = './data_processed/road_gcj.csv'
     df = pd.read_csv(file_path)
     # 按照'length'升序排列
     # df.sort_values(by='length', inplace=True)
     # 根据'length'和'coordinates'列删除重复行，只保留第一次出现的行
     df.drop_duplicates(subset=['length', 'coordinates'], keep='first', inplace=True)
     # 将结果保存到新的CSV文件
-    output_file_path = './data_processd/road_gcj_drop_duplicates.csv'
+    output_file_path = './data_processed/road_gcj_drop_duplicates.csv'
     df.to_csv(output_file_path, index=False)
 
 
