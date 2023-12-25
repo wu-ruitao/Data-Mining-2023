@@ -9,7 +9,6 @@ a = 6378245.0  # 长半轴
 ee = 0.00669342162296594323  # 偏心率平方
 
 
-
 def gcj02_to_bd09(lng, lat):
     """
     火星坐标系(GCJ-02)转百度坐标系(BD-09)
@@ -99,24 +98,18 @@ def wgs84_to_bd09(lon, lat):
 def _transformlat(lng, lat):
     ret = -100.0 + 2.0 * lng + 3.0 * lat + 0.2 * lat * lat + \
           0.1 * lng * lat + 0.2 * math.sqrt(math.fabs(lng))
-    ret += (20.0 * math.sin(6.0 * lng * pi) + 20.0 *
-            math.sin(2.0 * lng * pi)) * 2.0 / 3.0
-    ret += (20.0 * math.sin(lat * pi) + 40.0 *
-            math.sin(lat / 3.0 * pi)) * 2.0 / 3.0
-    ret += (160.0 * math.sin(lat / 12.0 * pi) + 320 *
-            math.sin(lat * pi / 30.0)) * 2.0 / 3.0
+    ret += (20.0 * math.sin(6.0 * lng * pi) + 20.0 * math.sin(2.0 * lng * pi)) * 2.0 / 3.0
+    ret += (20.0 * math.sin(lat * pi) + 40.0 * math.sin(lat / 3.0 * pi)) * 2.0 / 3.0
+    ret += (160.0 * math.sin(lat / 12.0 * pi) + 320 * math.sin(lat * pi / 30.0)) * 2.0 / 3.0
     return ret
 
 
 def _transformlng(lng, lat):
     ret = 300.0 + lng + 2.0 * lat + 0.1 * lng * lng + \
           0.1 * lng * lat + 0.1 * math.sqrt(math.fabs(lng))
-    ret += (20.0 * math.sin(6.0 * lng * pi) + 20.0 *
-            math.sin(2.0 * lng * pi)) * 2.0 / 3.0
-    ret += (20.0 * math.sin(lng * pi) + 40.0 *
-            math.sin(lng / 3.0 * pi)) * 2.0 / 3.0
-    ret += (150.0 * math.sin(lng / 12.0 * pi) + 300.0 *
-            math.sin(lng / 30.0 * pi)) * 2.0 / 3.0
+    ret += (20.0 * math.sin(6.0 * lng * pi) + 20.0 * math.sin(2.0 * lng * pi)) * 2.0 / 3.0
+    ret += (20.0 * math.sin(lng * pi) + 40.0 * math.sin(lng / 3.0 * pi)) * 2.0 / 3.0
+    ret += (150.0 * math.sin(lng / 12.0 * pi) + 300.0 * math.sin(lng / 30.0 * pi)) * 2.0 / 3.0
     return ret
 
 
@@ -139,14 +132,12 @@ if __name__ == '__main__':
     # result4 = gcj02_to_wgs84(lng, lat)
     # result5 = bd09_to_wgs84(lng, lat)
     # result6 = wgs84_to_bd09(lng, lat)
-    ls = [[116.471111542, 39.8430839], [116.4650629, 39.8479872], [116.4633824, 39.8495324], [116.4613799, 39.8512927], [116.4589475, 39.8532583], [116.4548598, 39.8564514], [116.454553, 39.8566917], [116.4506735, 39.8597612]]
+    ls = [[116.471111542, 39.8430839], [116.4650629, 39.8479872], [116.4633824, 39.8495324], [116.4613799, 39.8512927],
+          [116.4589475, 39.8532583], [116.4548598, 39.8564514], [116.454553, 39.8566917], [116.4506735, 39.8597612]]
     res = []
     for cr in ls:
         lng, lat = cr
         res.append(wgs84_to_gcj02(lng, lat))
-    
 
-    
     print(res)
     # print(result1, result2, result3, result4, result5, result6)
-

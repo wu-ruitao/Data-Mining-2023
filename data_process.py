@@ -7,13 +7,12 @@ import json
 import math
 
 
-
 def traj_csv_to_js():
     '''
     原始 traj.csv 文件转换为用于绘制地图的 js 文件
     '''
     data = pd.read_csv("./data_raw/traj.csv")
-    with open('./data_processed/traj.js','w+') as f:
+    with open('./data_processed/traj.js', 'w+') as f:
         f.write('var traj = [')
         for c in tqdm(data['coordinates']):
             f.write('{"lnglat":')
@@ -27,7 +26,7 @@ def road_csv_to_js():
     原始 road.csv 文件转换为用于绘制地图的 js 文件
     '''
     data = pd.read_csv("./data_processed/road_gcj.csv")
-    with open('./data_processed/roadgcj.js','w+') as f:
+    with open('./data_processed/roadgcj.js', 'w+') as f:
         f.write('var road = [')
         for c in tqdm(data['coordinates']):
             f.write(c)
@@ -41,12 +40,12 @@ def road_csv_wgs2gcj():
     '''
     data = pd.read_csv('./data_raw/road.csv')
     for i in tqdm(range(len(data))):
-        coord_list = eval(data.loc[i,'coordinates'])
+        coord_list = eval(data.loc[i, 'coordinates'])
         res_list = []
         for c in coord_list:
             lng, lat = c
             res_list.append(wgs84_to_gcj02(lng, lat))
-        data.loc[i,'coordinates'] = str(res_list)
+        data.loc[i, 'coordinates'] = str(res_list)
     data.to_csv('./data_processed/road_gcj.csv', index=False)
 
 
@@ -57,12 +56,12 @@ def road_csv_round():
     '''
     data = pd.read_csv('./data_processed/road_gcj.csv')
     for i in tqdm(range(len(data))):
-        coord_list = eval(data.loc[i,'coordinates'])
+        coord_list = eval(data.loc[i, 'coordinates'])
         res_list = []
         for c in coord_list:
             lng, lat = c
-            res_list.append([round(lng,7), round(lat,7)])
-        data.loc[i,'coordinates'] = str(res_list)
+            res_list.append([round(lng, 7), round(lat, 7)])
+        data.loc[i, 'coordinates'] = str(res_list)
     data.to_csv('./data_processed/road_round.csv', index=False)
 
 
@@ -99,18 +98,12 @@ def gen_node_csv():
             coord_str = json.dumps(coord)
             if coord_str not in seen:
                 seen.add(coord_str)
-                rows.append({
-                    'geo_id': len(rows),
-                    'type': 'Point',
-                    'coordinates': coord,
-                    'highway': row['highway']
-                })
+                rows.append({'geo_id': len(rows), 'type': 'Point', 'coordinates': coord, 'highway': row['highway']})
 
     new_df = pd.DataFrame(rows)
 
     # 将新的DataFrame保存为csv文件
     new_df.to_csv('./data_processed/node.csv', index=False)
-
 
 
 def gen_node_json():
@@ -123,11 +116,9 @@ def gen_node_json():
                 count = 1
                 continue
             string2Id[row[2]] = row[0]
-    
+
     with open("./data_processed/string2Id.json", "w") as r:
         json.dump(string2Id, r)
-
-
 
 
 def gen_input_edges_csv():
@@ -164,18 +155,18 @@ def gen_input_edges_csv():
                     start = end
 
 
-
 def fmm_draw_traj():
     '''
     将 fmm 输入的 traj.csv 文件转化为用于绘制地图的 traj.js
     '''
     data = pd.read_csv("./data_input/traj.csv", sep=';')
-    with open('./map_draw/traj.js','w+') as f:
+    with open('./map_draw/traj.js', 'w+') as f:
         f.write('var traj = [')
         for row in tqdm(range(len(data))):
             f.write('{"lnglat": ')
             f.write('[' + str(data.iloc[row]['x']) + ', ' + str(data.iloc[row]['y']) + ']')
-            if row == 0 or row == len(data)-1 or data.iloc[row]['id'] != data.iloc[row-1]['id'] or data.iloc[row]['id'] != data.iloc[row+1]['id']:
+            if row == 0 or row == len(data) - 1 or data.iloc[row]['id'] != data.iloc[
+                    row - 1]['id'] or data.iloc[row]['id'] != data.iloc[row + 1]['id']:
                 f.write(',"style":0, ')
             else:
                 f.write(',"style":1, ')
@@ -191,7 +182,7 @@ def fmm_draw_path(trans=False):
     '''
     mr = pd.read_csv('./data_output/mr.csv', sep=';')
     road = pd.read_csv('./data_input/edges.csv')
-    with open('./map_draw/path.js','w') as f:
+    with open('./map_draw/path.js', 'w') as f:
         f.write('var path = [')
         for mr_row in tqdm(mr['cpath']):
             # f.write('[')    # 每条完整路径的开始
@@ -201,7 +192,7 @@ def fmm_draw_path(trans=False):
                 # mr_row 为 int，说明该路径只有一段路
                 cpath = [eval(mr_row)]
             for id in cpath:
-                f.write('[') 
+                f.write('[')
                 if trans:
                     f.write(str(wgs84_to_gcj02(road.iloc[int(id)]['x1'], road.iloc[int(id)]['y1'])) + ', ')
                     f.write(str(wgs84_to_gcj02(road.iloc[int(id)]['x2'], road.iloc[int(id)]['y2'])))
@@ -210,7 +201,7 @@ def fmm_draw_path(trans=False):
                     f.write('[' + str(road.iloc[int(id)]['x2']) + ',' + str(road.iloc[int(id)]['y2']) + ']')
                 f.write('], ')
             # f.write('], ')
-        f.write(']')        # 每条完整路径的结束
+        f.write(']')  # 每条完整路径的结束
 
 
 def road_csv_drop_duplicates():
@@ -233,6 +224,7 @@ def calculate_cost():
     '''
     计算 edges.csv 中 cost 列的值，目前认为 cost=路段起始点之间的大圆距离（单位：米）
     '''
+
     def haversine(lat1, lon1, lat2, lon2):
         # 将经纬度转换为弧度
         lat1, lon1, lat2, lon2 = map(math.radians, [lat1, lon1, lat2, lon2])
@@ -240,14 +232,14 @@ def calculate_cost():
         dlat = lat2 - lat1
         dlon = lon2 - lon1
         # Haversine公式计算距离
-        a = math.sin(dlat / 2) ** 2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2) ** 2
+        a = math.sin(dlat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2)**2
         c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
         # 地球半径（单位：千米）
         radius = 6371000.0
         # 计算距离
         distance = radius * c
         return distance
-    
+
     # 读取CSV文件
     df = pd.read_csv('./data_input/edges.csv')
     # 遍历每一行，计算距离并写入 'cost' 列
