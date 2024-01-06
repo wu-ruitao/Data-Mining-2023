@@ -26,3 +26,4 @@
 
 - cut 和 encode 处理后的文件均保存在 `LibCity\libcity\cache\dataset_cache` 文件夹内
 - 模型权重保存在 `LibCity\libcity\cache\52259\model_cache` 文件夹内
+- 由于 `github` 具有上传文件大小限制，`LibCity\libcity\cache\dataset_cache` 以压缩文件形式上传，使用前请解压缩

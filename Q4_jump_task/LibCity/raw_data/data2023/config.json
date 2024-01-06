@@ -1,0 +1,41 @@
+{
+    "geo": {
+        "including_types": ["Point"],
+        "Point": {}
+    },
+    "usr": {
+        "properties": {}
+    },
+    "rel": {
+        "including_types": ["geo"],
+        "geo": {
+            "highway": "num", 
+            "length": "num", 
+            "lanes": "num",
+            "tunnel": "num", 
+            "bridge": "num", 
+            "maxspeed": "num", 
+            "width": "num", 
+            "alley": "num", 
+            "roundabout": "num"
+        }
+    },
+    "dyna": {
+        "including_types": ["trajectory"],
+        "trajectory": {
+            "entity_id": "usr_id",
+            "traj_id": "usr_id",
+            "location": "geo_id",
+            "current_dis": "num",
+            "speeds": "num", 
+            "holidays": "num"
+        }
+    },
+    "info": {
+        "distance_upper": 100,
+        "geo_file": "data2023",
+        "dyna_file": "data2023",
+        "usr_file": "data2023",
+        "rel_file": "data2023"
+    }
+}
