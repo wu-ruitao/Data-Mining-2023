@@ -1,0 +1,196 @@
+[info][fmm_app.cpp:31 ] Run map matching parallelly
+[warning][fmm_algorithm.cpp:289] Traj 20851 unmatched as point 3 and 4 not connected
+[warning][fmm_algorithm.cpp:289] Traj 4376 unmatched as point 25 and 26 not connected
+[warning][fmm_algorithm.cpp:289] Traj 9835 unmatched as point 22 and 23 not connected
+[warning][fmm_algorithm.cpp:289] Traj 3289 unmatched as point 4 and 5 not connected
+Progress 100
+[warning][fmm_algorithm.cpp:289] Traj 4383 unmatched as point 13 and 14 not connected
+[warning][fmm_algorithm.cpp:289] Traj 19734 unmatched as point 36 and 37 not connected
+[warning][fmm_algorithm.cpp:289] Traj 12068 unmatched as point 39 and 40 not connected
+[warning][fmm_algorithm.cpp:289] Traj 4384 unmatched as point 23 and 24 not connected
+[warning][fmm_algorithm.cpp:289] Traj 10949 unmatched as point 42 and 43 not connected
+[warning][fmm_algorithm.cpp:289] Traj 15 unmatched as point 4 and 5 not connected
+Progress 200
+[warning][fmm_algorithm.cpp:289] Traj 19 unmatched as point 7 and 8 not connected
+[warning][fmm_algorithm.cpp:289] Traj 5514 unmatched as point 31 and 32 not connected
+[warning][fmm_algorithm.cpp:289] Traj 6617 unmatched as point 8 and 9 not connected
+Progress 300
+[warning][fmm_algorithm.cpp:289] Traj 16476 unmatched as point 4 and 5 not connected
+[warning][fmm_algorithm.cpp:289] Traj 19744 unmatched as point 30 and 31 not connected
+[warning][fmm_algorithm.cpp:289] Traj 14297 unmatched as point 13 and 14 not connected
+[warning][fmm_algorithm.cpp:289] Traj 19745 unmatched as point 10 and 11 not connected
+[warning][fmm_algorithm.cpp:289] Traj 4391 unmatched as point 58 and 59 not connected
+[warning][fmm_algorithm.cpp:289] Traj 4392 unmatched as point 11 and 12 not connected
+[warning][fmm_algorithm.cpp:289] Traj 3318 unmatched as point 4 and 5 not connected
+Progress 400
+[warning][fmm_algorithm.cpp:289] Traj 8789 unmatched as point 47 and 48 not connected
+[warning][fmm_algorithm.cpp:289] Traj 12097 unmatched as point 8 and 9 not connected
+[warning][fmm_algorithm.cpp:289] Traj 14302 unmatched as point 7 and 8 not connected
+[warning][fmm_algorithm.cpp:289] Traj 4394 unmatched as point 76 and 77 not connected
+[warning][fmm_algorithm.cpp:289] Traj 7703 unmatched as point 70 and 71 not connected
+[warning][fmm_algorithm.cpp:289] Traj 1127 unmatched as point 6 and 7 not connected
+[warning][fmm_algorithm.cpp:289] Traj 5527 unmatched as point 7 and 8 not connected
+[warning][fmm_algorithm.cpp:289] Traj 17576 unmatched as point 48 and 49 not connected
+[warning][fmm_algorithm.cpp:289] Traj 1129 unmatched as point 36 and 37 not connected
+Progress 500
+[warning][fmm_algorithm.cpp:289] Traj 2247 unmatched as point 8 and 9 not connected
+[warning][fmm_algorithm.cpp:289] Traj 5529 unmatched as point 6 and 7 not connected
+[warning][fmm_algorithm.cpp:289] Traj 19754 unmatched as point 50 and 51 not connected
+[warning][fmm_algorithm.cpp:289] Traj 6631 unmatched as point 27 and 28 not connected
+[warning][fmm_algorithm.cpp:289] Traj 4407 unmatched as point 10 and 11 not connected
+Progress 600
+[warning][fmm_algorithm.cpp:289] Traj 8802 unmatched as point 42 and 43 not connected
+[warning][fmm_algorithm.cpp:289] Traj 3331 unmatched as point 8 and 9 not connected
+[warning][fmm_algorithm.cpp:289] Traj 8803 unmatched as point 1 and 2 not connected
+[warning][fmm_algorithm.cpp:289] Traj 18671 unmatched as point 18 and 19 not connected
+[warning][fmm_algorithm.cpp:289] Traj 18672 unmatched as point 8 and 9 not connected
+[warning][fmm_algorithm.cpp:289] Traj 5533 unmatched as point 30 and 31 not connected
+[warning][fmm_algorithm.cpp:289] Traj 18674 unmatched as point 13 and 14 not connected
+[warning][fmm_algorithm.cpp:289] Traj 4416 unmatched as point 2 and 3 not connected
+[warning][fmm_algorithm.cpp:289] Traj 13197 unmatched as point 42 and 43 not connected
+[warning][fmm_algorithm.cpp:289] Traj 13198 unmatched as point 12 and 13 not connected
+[warning][fmm_algorithm.cpp:289] Traj 8806 unmatched as point 4 and 5 not connected
+Progress 700
+[warning][fmm_algorithm.cpp:289] Traj 8812 unmatched as point 3 and 4 not connected
+[warning][fmm_algorithm.cpp:289] Traj 8813 unmatched as point 3 and 4 not connected
+[warning][fmm_algorithm.cpp:289] Traj 19762 unmatched as point 36 and 37 not connected
+[warning][fmm_algorithm.cpp:289] Traj 5537 unmatched as point 10 and 11 not connected
+[warning][fmm_algorithm.cpp:289] Traj 20907 unmatched as point 9 and 10 not connected
+[warning][fmm_algorithm.cpp:289] Traj 14321 unmatched as point 19 and 20 not connected
+[warning][fmm_algorithm.cpp:289] Traj 7721 unmatched as point 21 and 22 not connected
+[warning][fmm_algorithm.cpp:289] Traj 5540 unmatched as point 59 and 60 not connected
+Progress 800
+[warning][fmm_algorithm.cpp:289] Traj 20909 unmatched as point 61 and 62 not connected
+[warning][fmm_algorithm.cpp:289] Traj 20910 unmatched as point 14 and 15 not connected
+Progress 900
+[warning][fmm_algorithm.cpp:289] Traj 3351 unmatched as point 10 and 11 not connected
+[warning][fmm_algorithm.cpp:289] Traj 5550 unmatched as point 2 and 3 not connected
+[warning][fmm_algorithm.cpp:289] Traj 2270 unmatched as point 11 and 12 not connected
+[warning][fmm_algorithm.cpp:289] Traj 2271 unmatched as point 17 and 18 not connected
+[warning][fmm_algorithm.cpp:289] Traj 10987 unmatched as point 58 and 59 not connected
+[warning][fmm_algorithm.cpp:289] Traj 10988 unmatched as point 10 and 11 not connected
+Progress 1000
+[warning][fmm_algorithm.cpp:289] Traj 2274 unmatched as point 7 and 8 not connected
+[warning][fmm_algorithm.cpp:289] Traj 19779 unmatched as point 14 and 15 not connected
+[warning][fmm_algorithm.cpp:289] Traj 6665 unmatched as point 44 and 45 not connected
+Progress 1100
+[warning][fmm_algorithm.cpp:289] Traj 16540 unmatched as point 49 and 50 not connected
+[warning][fmm_algorithm.cpp:289] Traj 7743 unmatched as point 13 and 14 not connected
+[warning][fmm_algorithm.cpp:289] Traj 16541 unmatched as point 1 and 2 not connected
+[warning][fmm_algorithm.cpp:289] Traj 66 unmatched as point 41 and 42 not connected
+[warning][fmm_algorithm.cpp:289] Traj 5567 unmatched as point 19 and 20 not connected
+Progress 1200
+[warning][fmm_algorithm.cpp:289] Traj 6680 unmatched as point 1 and 2 not connected
+[warning][fmm_algorithm.cpp:289] Traj 20931 unmatched as point 9 and 10 not connected
+Progress 1300
+[warning][fmm_algorithm.cpp:289] Traj 19790 unmatched as point 6 and 7 not connected
+[warning][fmm_algorithm.cpp:289] Traj 15418 unmatched as point 13 and 14 not connected
+Progress 1400
+[warning][fmm_algorithm.cpp:289] Traj 20948 unmatched as point 13 and 14 not connected
+[warning][fmm_algorithm.cpp:289] Traj 15421 unmatched as point 11 and 12 not connected
+[warning][fmm_algorithm.cpp:289] Traj 15423 unmatched as point 47 and 48 not connected
+[warning][fmm_algorithm.cpp:289] Traj 1199 unmatched as point 29 and 30 not connected
+[warning][fmm_algorithm.cpp:289] Traj 15424 unmatched as point 43 and 44 not connected
+[warning][fmm_algorithm.cpp:289] Traj 13264 unmatched as point 46 and 47 not connected
+Progress 1500
+[warning][fmm_algorithm.cpp:289] Traj 7759 unmatched as point 8 and 9 not connected
+[warning][fmm_algorithm.cpp:289] Traj 7760 unmatched as point 3 and 4 not connected
+[warning][fmm_algorithm.cpp:289] Traj 3402 unmatched as point 62 and 63 not connected
+[warning][fmm_algorithm.cpp:289] Traj 3404 unmatched as point 9 and 10 not connected
+[warning][fmm_algorithm.cpp:289] Traj 6700 unmatched as point 3 and 4 not connected
+[warning][fmm_algorithm.cpp:289] Traj 8855 unmatched as point 76 and 77 not connected
+[warning][fmm_algorithm.cpp:289] Traj 4463 unmatched as point 57 and 58 not connected
+[warning][fmm_algorithm.cpp:289] Traj 7766 unmatched as point 7 and 8 not connected
+[warning][fmm_algorithm.cpp:289] Traj 19822 unmatched as point 4 and 5 not connected
+Progress 1600
+[warning][fmm_algorithm.cpp:289] Traj 19823 unmatched as point 1 and 2 not connected
+[warning][fmm_algorithm.cpp:289] Traj 18727 unmatched as point 73 and 74 not connected
+[warning][fmm_algorithm.cpp:289] Traj 19825 unmatched as point 15 and 16 not connected
+[warning][fmm_algorithm.cpp:289] Traj 2313 unmatched as point 32 and 33 not connected
+[warning][fmm_algorithm.cpp:289] Traj 15435 unmatched as point 2 and 3 not connected
+Progress 1700
+[warning][fmm_algorithm.cpp:289] Traj 15437 unmatched as point 13 and 14 not connected
+[warning][fmm_algorithm.cpp:289] Traj 19828 unmatched as point 51 and 52 not connected
+[warning][fmm_algorithm.cpp:289] Traj 11037 unmatched as point 3 and 4 not connected
+[warning][fmm_algorithm.cpp:289] Traj 19829 unmatched as point 5 and 6 not connected
+[warning][fmm_algorithm.cpp:289] Traj 9937 unmatched as point 46 and 47 not connected
+[warning][fmm_algorithm.cpp:289] Traj 9938 unmatched as point 10 and 11 not connected
+[warning][fmm_algorithm.cpp:289] Traj 18730 unmatched as point 17 and 18 not connected
+[warning][fmm_algorithm.cpp:289] Traj 3424 unmatched as point 20 and 21 not connected
+[warning][fmm_algorithm.cpp:289] Traj 1217 unmatched as point 13 and 14 not connected
+[warning][fmm_algorithm.cpp:289] Traj 18731 unmatched as point 29 and 30 not connected
+[warning][fmm_algorithm.cpp:289] Traj 111 unmatched as point 14 and 15 not connected
+Progress 1800
+[warning][fmm_algorithm.cpp:289] Traj 3429 unmatched as point 14 and 15 not connected
+[warning][fmm_algorithm.cpp:289] Traj 6728 unmatched as point 13 and 14 not connected
+[warning][fmm_algorithm.cpp:289] Traj 4501 unmatched as point 36 and 37 not connected
+[warning][fmm_algorithm.cpp:289] Traj 13287 unmatched as point 19 and 20 not connected
+[warning][fmm_algorithm.cpp:289] Traj 12215 unmatched as point 10 and 11 not connected
+[warning][fmm_algorithm.cpp:289] Traj 15453 unmatched as point 3 and 4 not connected
+[warning][fmm_algorithm.cpp:289] Traj 11050 unmatched as point 49 and 50 not connected
+Progress 1900
+[warning][fmm_algorithm.cpp:289] Traj 11051 unmatched as point 9 and 10 not connected
+[warning][fmm_algorithm.cpp:289] Traj 14386 unmatched as point 52 and 53 not connected
+[warning][fmm_algorithm.cpp:289] Traj 18744 unmatched as point 12 and 13 not connected
+[warning][fmm_algorithm.cpp:289] Traj 14389 unmatched as point 11 and 12 not connected
+[warning][fmm_algorithm.cpp:289] Traj 14390 unmatched as point 14 and 15 not connected
+[warning][fmm_algorithm.cpp:289] Traj 9948 unmatched as point 35 and 36 not connected
+[warning][fmm_algorithm.cpp:289] Traj 15470 unmatched as point 0 and 1 not connected
+Progress 2000
+[warning][fmm_algorithm.cpp:289] Traj 5610 unmatched as point 18 and 19 not connected
+[warning][fmm_algorithm.cpp:289] Traj 3446 unmatched as point 27 and 28 not connected
+[warning][fmm_algorithm.cpp:289] Traj 16599 unmatched as point 30 and 31 not connected
+[warning][fmm_algorithm.cpp:289] Traj 8868 unmatched as point 25 and 26 not connected
+[warning][fmm_algorithm.cpp:289] Traj 18759 unmatched as point 7 and 8 not connected
+[warning][fmm_algorithm.cpp:289] Traj 18760 unmatched as point 5 and 6 not connected
+Progress 2100
+[warning][fmm_algorithm.cpp:289] Traj 16603 unmatched as point 22 and 23 not connected
+[warning][fmm_algorithm.cpp:289] Traj 18765 unmatched as point 48 and 49 not connected
+[warning][fmm_algorithm.cpp:289] Traj 11074 unmatched as point 12 and 13 not connected
+[warning][fmm_algorithm.cpp:289] Traj 14400 unmatched as point 31 and 32 not connected
+[warning][fmm_algorithm.cpp:289] Traj 130 unmatched as point 51 and 52 not connected
+[warning][fmm_algorithm.cpp:289] Traj 3462 unmatched as point 4 and 5 not connected
+[warning][fmm_algorithm.cpp:289] Traj 3464 unmatched as point 2 and 3 not connected
+Progress 2200
+[warning][fmm_algorithm.cpp:289] Traj 3467 unmatched as point 18 and 19 not connected
+[warning][fmm_algorithm.cpp:289] Traj 3474 unmatched as point 9 and 10 not connected
+[warning][fmm_algorithm.cpp:289] Traj 4537 unmatched as point 13 and 14 not connected
+[warning][fmm_algorithm.cpp:289] Traj 17666 unmatched as point 68 and 69 not connected
+[warning][fmm_algorithm.cpp:289] Traj 5630 unmatched as point 75 and 76 not connected
+Progress 2300
+[warning][fmm_algorithm.cpp:289] Traj 16614 unmatched as point 15 and 16 not connected
+[warning][fmm_algorithm.cpp:289] Traj 16615 unmatched as point 21 and 22 not connected
+[warning][fmm_algorithm.cpp:289] Traj 5639 unmatched as point 38 and 39 not connected
+[warning][fmm_algorithm.cpp:289] Traj 12264 unmatched as point 11 and 12 not connected
+Progress 2400
+[warning][fmm_algorithm.cpp:289] Traj 7800 unmatched as point 46 and 47 not connected
+[warning][fmm_algorithm.cpp:289] Traj 1259 unmatched as point 5 and 6 not connected
+[warning][fmm_algorithm.cpp:289] Traj 12269 unmatched as point 2 and 3 not connected
+[warning][fmm_algorithm.cpp:289] Traj 146 unmatched as point 7 and 8 not connected
+[warning][fmm_algorithm.cpp:289] Traj 20999 unmatched as point 5 and 6 not connected
+[warning][fmm_algorithm.cpp:289] Traj 18776 unmatched as point 60 and 61 not connected
+[warning][fmm_algorithm.cpp:289] Traj 16619 unmatched as point 14 and 15 not connected
+Progress 2500
+[warning][fmm_algorithm.cpp:289] Traj 16621 unmatched as point 13 and 14 not connected
+[warning][fmm_algorithm.cpp:289] Traj 17679 unmatched as point 70 and 71 not connected
+[warning][fmm_algorithm.cpp:289] Traj 14419 unmatched as point 5 and 6 not connected
+[warning][fmm_algorithm.cpp:289] Traj 19888 unmatched as point 15 and 16 not connected
+[warning][fmm_algorithm.cpp:289] Traj 14420 unmatched as point 24 and 25 not connected
+[warning][fmm_algorithm.cpp:289] Traj 19889 unmatched as point 12 and 13 not connected
+[warning][fmm_algorithm.cpp:289] Traj 14421 unmatched as point 4 and 5 not connected
+[warning][fmm_algorithm.cpp:289] Traj 1275 unmatched as point 13 and 14 not connected
+[warning][fmm_algorithm.cpp:289] Traj 4552 unmatched as point 12 and 13 not connected
+[warning][fmm_algorithm.cpp:289] Traj 4553 unmatched as point 8 and 9 not connected
+[warning][fmm_algorithm.cpp:289] Traj 11090 unmatched as point 32 and 33 not connected
+[warning][fmm_algorithm.cpp:289] Traj 11091 unmatched as point 15 and 16 not connected
+[warning][fmm_algorithm.cpp:289] Traj 8888 unmatched as point 18 and 19 not connected
+[warning][fmm_algorithm.cpp:289] Traj 21010 unmatched as point 27 and 28 not connected
+Progress 2600
+[warning][fmm_algorithm.cpp:289] Traj 1287 unmatched as point 19 and 20 not connected
+[warning][fmm_algorithm.cpp:289] Traj 16628 unmatched as point 12 and 13 not connected
+Progress 2700
+[warning][fmm_algorithm.cpp:289] Traj 3509 unmatched as point 0 and 1 not connected
+[warning][fmm_algorithm.cpp:289] Traj 4570 unmatched as point 20 and 21 not connected
+Progress 2800
+[warning][fmm_algorithm.cpp:289] Traj 11109 unmatched as point 24 and 25 not connected
+[warning][fmm_algorithm.cpp:289] Traj 11112 unmatched as point 8 and 9 not connected
